@@ -134,6 +134,29 @@
             padding: var(--spacing-4xl);
             color: var(--color-text-secondary);
         }
+
+        @media (max-width: 768px) {
+            .document-row {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: var(--spacing-md);
+            }
+
+            .document-info {
+                width: 100%;
+            }
+
+            .document-actions {
+                width: 100%;
+                display: flex;
+                gap: var(--spacing-sm);
+                margin-top: var(--spacing-sm);
+            }
+
+            .document-actions .btn {
+                flex: 1;
+            }
+        }
     </style>
 </head>
 
@@ -248,9 +271,11 @@
         <button class="widget-button" aria-label="Contact WhatsApp">💬</button>
         <div class="widget-tooltip">Besoin d'aide ?</div>
     </div>
-    <a href="https://chatgpt.com/g/g-6864e18a99688191a39104a164c7b6d9-fabrizio-ia" target="_blank" class="floating-widget ai-widget" style="text-decoration: none;">
+    <a href="https://chatgpt.com/g/g-6864e18a99688191a39104a164c7b6d9-fabrizio-ia" target="_blank"
+        class="floating-widget ai-widget" style="text-decoration: none;">
         <button class="widget-button" aria-label="Assistant IA">🤖</button>
-        <div class="widget-tooltip">Assistant IA</a>
+        <div class="widget-tooltip">Assistant IA
+    </a>
     </div>
 
     <script src="js/main.js"></script>
