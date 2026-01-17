@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Services d'accompagnement pour étudier en Italie - Visa, logement, inscription universitaire">
+    <meta name="keywords" content="services visa Italie, accompagnement étudiant, inscription université">
+    <title>Nos Services - Accompagnement Complet | VISTO</title>
+
+    <link rel="stylesheet" href="css/design-system.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/animations.css">
+
+    <style>
+        .page-header {
+            background: linear-gradient(135deg, var(--color-secondary), var(--color-secondary-dark)),
+                url('images/services-bg.png') center/cover;
+            background-blend-mode: overlay;
+            color: white;
+            padding: var(--spacing-4xl) 0 var(--spacing-3xl);
+            text-align: center;
+        }
+
+        .page-header h1 {
+            color: white;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .service-package {
+            background: var(--color-surface);
+            border-radius: var(--radius-2xl);
+            padding: var(--spacing-3xl);
+            box-shadow: var(--shadow-xl);
+            transition: all var(--transition-base);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .service-package:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-2xl);
+        }
+
+        .service-package.featured {
+            border: 3px solid var(--color-secondary);
+            position: relative;
+        }
+
+        .featured-badge {
+            position: absolute;
+            top: -15px;
+            right: var(--spacing-xl);
+            background: var(--color-secondary);
+            color: white;
+            padding: var(--spacing-sm) var(--spacing-lg);
+            border-radius: var(--radius-full);
+            font-weight: var(--font-weight-bold);
+            font-size: var(--font-size-sm);
+        }
+
+        .package-header {
+            text-align: center;
+            margin-bottom: var(--spacing-xl);
+            padding-bottom: var(--spacing-xl);
+            border-bottom: 2px solid var(--color-background);
+        }
+
+        .package-name {
+            font-size: var(--font-size-3xl);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .package-price {
+            font-size: var(--font-size-5xl);
+            font-weight: var(--font-weight-extrabold);
+            color: var(--color-primary);
+            font-family: var(--font-heading);
+        }
+
+        .package-price small {
+            font-size: var(--font-size-lg);
+            font-weight: var(--font-weight-normal);
+            color: var(--color-error);
+        }
+
+        .package-features {
+            flex: 1;
+            margin-bottom: var(--spacing-xl);
+        }
+
+        .package-features li {
+            padding: var(--spacing-md) 0;
+            border-bottom: 1px solid var(--color-background);
+            display: flex;
+            align-items: flex-start;
+            gap: var(--spacing-md);
+        }
+
+        .package-features li:last-child {
+            border-bottom: none;
+        }
+
+        .feature-icon {
+            color: var(--color-secondary);
+            font-size: var(--font-size-xl);
+            flex-shrink: 0;
+        }
+
+        .process-step {
+            background: var(--color-surface);
+            padding: var(--spacing-2xl);
+            border-radius: var(--radius-xl);
+            text-align: center;
+            position: relative;
+        }
+
+        .step-number {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--color-primary), var(--color-primary-light));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: var(--font-size-2xl);
+            font-weight: var(--font-weight-extrabold);
+            color: white;
+            margin: 0 auto var(--spacing-lg);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--spacing-xl);
+            margin-top: var(--spacing-3xl);
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="index.html" class="navbar-logo">VISTO<span>Applicazione</span></a>
+            <button class="navbar-toggle" aria-label="Toggle navigation">
+                <span></span><span></span><span></span>
+            </button>
+            <ul class="navbar-menu">
+                <li class="navbar-item"><a href="index.html" class="navbar-link">Accueil</a></li>
+                <li class="navbar-item"><a href="universites.html" class="navbar-link">Universités</a></li>
+                <li class="navbar-item"><a href="services.html" class="navbar-link">Nos Services</a></li>
+                <li class="navbar-item navbar-dropdown">
+                    <a href="#" class="navbar-link navbar-dropdown-toggle">Outils Pratiques</a>
+                    <div class="navbar-dropdown-menu">
+                        <a href="code-fiscale.html" class="navbar-dropdown-item">🧮 Calcul Code Fiscale</a>
+                        <a href="verifier-agent.html" class="navbar-dropdown-item">🔍 Vérifier un Agent</a>
+                    </div>
+                </li>
+                <li class="navbar-item"><a href="mediatheque.html" class="navbar-link">Médiathèque</a></li>
+                <li class="navbar-item"><a href="blog.html" class="navbar-link">Blog</a></li>
+                <li class="navbar-item"><a href="apropos.html" class="navbar-link">À propos</a></li>
+                <li class="navbar-item"><a href="contact.html" class="navbar-link">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1 class="fade-in">✈️ Nos Services</h1>
+            <p class="fade-in" style="font-size: var(--font-size-lg); max-width: 700px; margin: 0 auto;">
+                Un accompagnement complet et personnalisé pour réussir votre projet d'études en Italie
+            </p>
+        </div>
+    </section>
+
+
+    <!-- Process Section -->
+    <section class="py-4xl bg-background">
+        <div class="container">
+            <div class="text-center mb-3xl">
+                <h2 class="fade-in">Notre Processus d'Accompagnement</h2>
+                <p class="text-muted fade-in">Une méthode éprouvée pour maximiser vos chances de réussite</p>
+            </div>
+
+            <!-- Important Info Section -->
+            <div class="card fade-in mb-3xl"
+                style="background: linear-gradient(135deg, rgba(46, 204, 113, 0.05), rgba(15, 76, 129, 0.05)); border-left: 4px solid var(--color-secondary);">
+                <h3
+                    style="color: var(--color-primary); margin-bottom: var(--spacing-lg); display: flex; align-items: center; gap: var(--spacing-sm);">
+                    Bon à savoir avant de commencer la procédure
+                </h3>
+                <p style="margin-bottom: var(--spacing-lg); color: var(--color-text-secondary);">
+                    Pour optimiser votre demande de visa et accélérer son traitement, utilisez notre guide complet :
+                </p>
+                <ul style="list-style: none; padding: 0; margin: 0; display: grid; gap: var(--spacing-md);">
+                    <li style="display: flex; align-items: start; gap: var(--spacing-md);">
+                        <!--<span style="color: var(--color-secondary); font-size: 1.5rem; flex-shrink: 0;">📋</span>-->
+                        <span><strong>Informations détaillées</strong> : Accédez à toutes les informations sur les types
+                            de visa et les exigences spécifiques selon votre pays d'origine.</span>
+                    </li>
+                    <li style="display: flex; align-items: start; gap: var(--spacing-md);">
+                        <!--<span style="color: var(--color-secondary); font-size: 1.5rem; flex-shrink: 0;">📄</span>-->
+                        <span><strong>Aide à la documentation</strong> : Conseils pratiques pour la collecte des
+                            documents requis (formulaires, justificatifs de revenus, attestation d'hébergement).</span>
+                    </li>
+                    <li style="display: flex; align-items: start; gap: var(--spacing-md);">
+                        <!--<span style="color: var(--color-secondary); font-size: 1.5rem; flex-shrink: 0;">💡</span>-->
+                        <span><strong>Astuces pour éviter les erreurs</strong> : Bénéficiez de recommandations pour
+                            prévenir les accrocs courants et garantir un dossier complet.</span>
+                    </li>
+                    <li style="display: flex; align-items: start; gap: var(--spacing-md);">
+                        <!--<span style="color: var(--color-secondary); font-size: 1.5rem; flex-shrink: 0;">🎯</span>-->
+                        <span><strong>Objectif</strong> : Être mieux préparé et maximiser vos chances de voir votre visa
+                            approuvé rapidement.</span>
+                    </li>
+                </ul>
+                <div
+                    style="margin-top: var(--spacing-lg); padding-top: var(--spacing-lg); border-top: 1px solid rgba(0,0,0,0.1);">
+                    <a href="mediatheque.html" class="btn btn-secondary">Accéder aux documents →</a>
+                </div>
+            </div>
+
+            <div class="features-grid gap-xl">
+                <a href="contact.html" class="process-step fade-in"
+                    style="text-decoration: none; color: inherit; display: block; height: 100%;">
+                    <div class="step-number">1</div>
+                    <h4>Orientation</h4>
+                    <p class="text-muted">
+                        Discutez de votre projet avec nos conseillers. Nous évaluons vos besoins et vous proposons un
+                        plan personnalisé.
+                    </p>
+                    <div class="mt-md text-primary font-semibold">Discuter de mon projet →</div>
+                </a>
+
+                <a href="universites.html" class="process-step fade-in"
+                    style="text-decoration: none; color: inherit; display: block; height: 100%;">
+                    <div class="step-number">2</div>
+                    <h4>Choix de l'Université</h4>
+                    <p class="text-muted">
+                        Nous vous aidons à sélectionner les universités et programmes qui correspondent le mieux à votre
+                        profil.
+                    </p>
+                    <div class="mt-md text-primary font-semibold">Voir les universités →</div>
+                </a>
+
+                <a href="mediatheque.html" class="process-step fade-in"
+                    style="text-decoration: none; color: inherit; display: block; height: 100%;">
+                    <div class="step-number">3</div>
+                    <h4>Démarches & Visa</h4>
+                    <p class="text-muted">
+                        Accédez à tous les documents nécessaires pour votre demande de visa et inscription
+                        universitaire.
+                    </p>
+                    <div class="mt-md text-primary font-semibold">Accéder aux documents →</div>
+                </a>
+
+                <a href="code-fiscale.html" class="process-step fade-in"
+                    style="text-decoration: none; color: inherit; display: block; height: 100%;">
+                    <div class="step-number">4</div>
+                    <h4>Installation</h4>
+                    <p class="text-muted">
+                        Préparez votre arrivée : code fiscal, logement et ouverture de compte bancaire.
+                    </p>
+                    <div class="mt-md text-primary font-semibold">Préparer mon arrivée →</div>
+                </a>
+            </div>
+
+            <!-- Useful Resources Section -->
+            <div class="mt-4xl pt-3xl border-top container">
+                <div class="text-center mb-xl">
+                    <h3 class="fade-in">Ressources Utiles</h3>
+                    <p class="text-muted fade-in">Tout ce dont vous avez besoin pour vous orienter</p>
+                </div>
+                <div class="features-grid">
+                    <a href="blog.html" class="card fade-in text-center hover-lift"
+                        style="text-decoration: none; color: inherit;">
+                        <div style="font-size: 2.5rem; margin-bottom: var(--spacing-sm);">📚</div>
+                        <h4>Guides & Conseils</h4>
+                        <p class="text-muted text-sm">Articles détaillés sur la vie étudiante en Italie</p>
+                    </a>
+                    <a href="verifier-agent.html" class="card fade-in text-center hover-lift"
+                        style="text-decoration: none; color: inherit;">
+                        <div style="font-size: 2.5rem; margin-bottom: var(--spacing-sm);">🛡️</div>
+                        <h4>Vérifier un Agent</h4>
+                        <p class="text-muted text-sm">Assurez-vous de la fiabilité de votre interlocuteur</p>
+                    </a>
+                    <a href="contact.html#faq" class="card fade-in text-center hover-lift"
+                        style="text-decoration: none; color: inherit;">
+                        <div style="font-size: 2.5rem; margin-bottom: var(--spacing-sm);">❓</div>
+                        <h4>FAQ</h4>
+                        <p class="text-muted text-sm">Réponses aux questions les plus fréquentes</p>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Service Packages -->
+    <section class="py-4xl">
+        <div class="container">
+            <div class="text-center mb-3xl">
+                <h2 class="fade-in">Choisissez Votre Formule</h2>
+                <p class="text-muted fade-in">Des services adaptés à chaque étape de votre parcours</p>
+            </div>
+
+            <div class="grid grid-cols-3 gap-xl">
+                <!-- Package Essentiel -->
+                <div class="fade-in">
+                    <div class="service-package">
+                        <div class="package-header">
+                            <h3 class="package-name">Essentiel</h3>
+                            <div class="package-price">Gratuit</div>
+                        </div>
+
+                        <ul class="package-features">
+                            <li>
+                                <span class="feature-icon">✓</span>
+                                <span>Accès complet à la médiathèque</span>
+                            </li>
+                            <li>
+                                <span class="feature-icon">✓</span>
+                                <span>Calculateur de code fiscal</span>
+                            </li>
+                            <li>
+                                <span class="feature-icon">✓</span>
+                                <span>Vérification d'agents</span>
+                            </li>
+                            <li>
+                                <span class="feature-icon">✓</span>
+                                <span>Guide PDF "Étudier en Italie"</span>
+                            </li>
+                            <li>
+                                <span class="feature-icon">✓</span>
+                                <span>Accès au blog et ressources</span>
+                            </li>
+                            <li>
+                                <span class="feature-icon" style="color: var(--color-text-light);">✗</span>
+                                <span style="color: var(--color-error); ">Consultation
+                                    personnalisée</span>
+                            </li>
+                            <li>
+                                <span class="feature-icon" style="color: var(--color-text-light);">✗</span>
+                                <span style="color: var(--color-error); ">Vérification
+                                    complète du dossier</span>
+                            </li>
+                            <li>
+                                <span class="feature-icon" style="color: var(--color-text-light);">✗</span>
+                                <span style="color: var(--color-error); ">Correction
+                                    lettre de motivation</span>
+                            </li>
+                            <li>
+                                <span class="feature-icon" style="color: var(--color-text-light);">✗</span>
+                                <span style="color: var(--color-error); ">Coaching
+                                    complet</span>
+                            </li>
+                            <li>
+                                <span class="feature-icon" style="color: var(--color-text-light);">✗</span>
+                                <span style="color: var(--color-error); ">Simulation
+                                    entretien consulaire</span>
+                            </li>
+                        </ul>
+
+                        <a href="contact.html" class="btn btn-outline btn-lg" style="width: 100%;">
+                            Commencer gratuitement
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Package Accompagnement (Featured) -->
+                <div class="fade-in">
+                    <div class="service-package featured">
+                        <div class="featured-badge">⭐ Populaire</div>
+                        <div class="package-header">
+                            <h3 class="package-name">Accompagnement</h3>
+                            <div class="package-price">
+                                149€
+                                <small>/ dossier</small>
+                            </div>
+                        </div>
+
+                        <ul class="package-features">
+                            <li>
+                                <span class="feature-icon">✓</span>
+                                <span>Tout du pack Essentiel</span>
+                            </li>
+                            <li>
+                                <span class="feature-icon">✓</span>
+                                <span>Consultation personnalisée (1h)</span>
+                            </li>
+                            <li>
+                                <span class="feature-icon">✓</span>
+                                <span>Vérification complète du dossier</span>
+                            </li>
+                            <li>
+                                <span class="feature-icon">✓</span>
+                                <span>Correction lettre de motivation</span>
+                            </li>
+                            <li>
+                                <span class="feature-icon">✓</span>
+                                <span>Aide à la pré-inscription</span>
+                            </li>
+                            <li>
+                                <span class="feature-icon">✓</span>
+                                <span>Support prioritaire par email</span>
+                            </li>
+                            <li>
+                                <span class="feature-icon">✓</span>
+                                <span>Checklist personnalisée</span>
+                            </li>
+                            <li>
+                                <span class="feature-icon" style="color: var(--color-text-light);">✗</span>
+                                <span style="color: var(--color-error); ">Coaching
+                                    complet (3 sessions)</span>
+                            </li>
+                            <li>
+                                <span class="feature-icon" style="color: var(--color-text-light);">✗</span>
+                                <span style="color: var(--color-error); ">Simulation
+                                    entretien consulaire</span>
+                            </li>
+                            <li>
+                                <span class="feature-icon" style="color: var(--color-text-light);">✗</span>
+                                <span style="color: var(--color-error); ">Aide à
+                                    la recherche de logement</span>
+                            </li>
+                            <li>
+                                <span class="feature-icon" style="color: var(--color-text-light);">✗</span>
+                                <span style="color: var(--color-error); ">Support
+                                    WhatsApp 24/7</span>
+                            </li>
+                            <li>
+                                <span class="feature-icon" style="color: var(--color-text-light);">✗</span>
+                                <span style="color: var(--color-error); ">Suivi
+                                    jusqu'à l'arrivée en Italie</span>
+                            </li>
+                        </ul>
+
+                        <a href="contact.html" class="btn btn-secondary btn-lg" style="width: 100%;">
+                            Choisir cette formule
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Package Premium -->
+                <div class="fade-in">
+                    <div class="service-package">
+                        <div class="package-header">
+                            <h3 class="package-name">Premium VIP</h3>
+                            <div class="package-price">
+                                399€
+                                <small>/ dossier</small>
+                            </div>
+                        </div>
+
+                        <ul class="package-features">
+                            <li>
+                                <span class="feature-icon">✓</span>
+                                <span>Tout du pack Accompagnement</span>
+                            </li>
+                            <li>
+                                <span class="feature-icon">✓</span>
+                                <span>Coaching complet (3 sessions)</span>
+                            </li>
+                            <li>
+                                <span class="feature-icon">✓</span>
+                                <span>Simulation entretien consulaire</span>
+                            </li>
+                            <li>
+                                <span class="feature-icon">✓</span>
+                                <span>Aide à la recherche de logement</span>
+                            </li>
+                            <li>
+                                <span class="feature-icon">✓</span>
+                                <span>Assistance déclaration de valeur</span>
+                            </li>
+                            <li>
+                                <span class="feature-icon">✓</span>
+                                <span>Support WhatsApp 24/7</span>
+                            </li>
+                            <li>
+                                <span class="feature-icon">✓</span>
+                                <span>Suivi jusqu'à l'arrivée en Italie</span>
+                            </li>
+                            <li>
+                                <span class="feature-icon">✓</span>
+                                <span>Garantie satisfaction</span>
+                            </li>
+                        </ul>
+
+                        <a href="contact.html" class="btn btn-primary btn-lg" style="width: 100%;">
+                            Réserver maintenant
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="py-4xl">
+        <div class="container container-narrow">
+            <h2 class="text-center mb-3xl fade-in">Ce Que Disent Nos Étudiants</h2>
+
+            <div class="grid grid-cols-2 gap-xl">
+                <div class="card fade-in">
+                    <div style="color: #FFD700; font-size: var(--font-size-xl); margin-bottom: var(--spacing-md);">
+                        ⭐⭐⭐⭐⭐
+                    </div>
+                    <p style="font-style: italic; margin-bottom: var(--spacing-lg);">
+                        "Grâce à VISTO, j'ai pu intégrer le Politecnico di Milano sans stress. L'accompagnement
+                        était parfait, du début à la fin. Je recommande à 100% !"
+                    </p>
+                    <div style="font-weight: var(--font-weight-semibold);">Sarah K.</div>
+                    <div class="text-muted" style="font-size: var(--font-size-sm);">Master en Architecture - Milan</div>
+                </div>
+
+                <div class="card fade-in">
+                    <div style="color: #FFD700; font-size: var(--font-size-xl); margin-bottom: var(--spacing-md);">
+                        ⭐⭐⭐⭐⭐
+                    </div>
+                    <p style="font-style: italic; margin-bottom: var(--spacing-lg);">
+                        "Le calculateur de code fiscal et la médiathèque m'ont fait gagner un temps fou.
+                        L'équipe est très réactive et professionnelle."
+                    </p>
+                    <div style="font-weight: var(--font-weight-semibold);">Ahmed M.</div>
+                    <div class="text-muted" style="font-size: var(--font-size-sm);">Licence en Économie - Bologne</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section">
+        <div class="container text-center">
+            <h2 class="fade-in">Prêt à Commencer ?</h2>
+            <p class="fade-in" style="font-size: var(--font-size-xl); margin-bottom: var(--spacing-2xl);">
+                Contactez-nous pour une consultation gratuite
+            </p>
+            <div class="fade-in">
+                <a href="contact.html" class="btn btn-accent btn-lg">
+                    Demander une consultation
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer-section">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4>VistoApplicazione</h4>
+                    <p>Votre partenaire de confiance pour concrétiser votre projet d'étude en Italie. De Douala à Milan,
+                        nous sommes avec vous.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Liens Utiles</h4>
+                    <ul>
+                        <li><a href="universites.html">Universités</a></li>
+                        <li><a href="services.html">Nos Services</a></li>
+                        <li><a href="code-fiscale.html">Code Fiscal</a></li>
+                        <li><a href="mediatheque.html">Médiathèque</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Légal</h4>
+                    <ul>
+                        <li><a href="#">CGV</a></li>
+                        <li><a href="#">Politique de confidentialité</a></li>
+                        <li><a href="#">Mentions légales</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Newsletter</h4>
+                    <p>Recevez les dates limites importantes.</p>
+                    <input type="email" placeholder="Votre email" class="footer-newsletter-input">
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>Fait avec ❤️ pour les étudiants par VistoApplicazione © 2025</p>
+            </div>
+        </div>
+    </footer>
+
+
+
+    <!-- WhatsApp Widget -->
+    <div class="floating-widget whatsapp-widget">
+        <button class="widget-button" aria-label="Contact WhatsApp">💬</button>
+        <div class="widget-tooltip">Besoin d'aide ?</div>
+    </div>
+    <a href="https://chatgpt.com/g/g-6864e18a99688191a39104a164c7b6d9-fabrizio-ia" target="_blank"
+        class="floating-widget ai-widget" style="text-decoration: none;">
+        <button class="widget-button" aria-label="Assistant IA">🤖</button>
+        <div class="widget-tooltip">Assistant IA
+    </a>
+    </div>
+
+    <script src="js/main.js"></script>
+</body>
+
+</html>

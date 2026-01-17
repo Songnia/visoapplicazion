@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Article de blog VISTO">
+    <title>Article - VISTO</title>
+
+    <link rel="stylesheet" href="css/design-system.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/animations.css">
+
+    <style>
+        .container {
+            margin-top: 3em;
+        }
+        .post-header {
+            background: linear-gradient(135deg, var(--color-surface), var(--color-background));
+            padding: var(--spacing-1xl) 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .post-content-container {
+            background: var(--color-surface);
+            border-radius: var(--radius-xl);
+            padding: var(--spacing-3xl);
+            box-shadow: var(--shadow-lg);
+            margin-top: -50px;
+            position: relative;
+            z-index: 10;
+        }
+
+
+        .post-meta {
+            display: flex;
+            justify-content: center;
+            gap: var(--spacing-lg);
+            color: var(--color-text-secondary);
+            margin-bottom: var(--spacing-xl);
+            font-size: var(--font-size-sm);
+        }
+
+        .post-body {
+            line-height: 1.8;
+            font-size: var(--font-size-lg);
+            color: var(--color-text-primary);
+        }
+
+        .post-body h2 {
+            color: var(--color-primary);
+            margin-top: var(--spacing-2xl);
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .post-body p {
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .post-body ul {
+            margin-bottom: var(--spacing-lg);
+            padding-left: var(--spacing-xl);
+        }
+
+        .post-body li {
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .pdf-download-section {
+            background: var(--color-background);
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-xl);
+            margin-top: var(--spacing-3xl);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-left: 4px solid var(--color-secondary);
+        }
+
+        @media (max-width: 768px) {
+            .pdf-download-section {
+                flex-direction: column;
+                text-align: center;
+                gap: var(--spacing-md);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="index.html" class="navbar-logo">VISTO<span>Applicazione</span></a>
+            <button class="navbar-toggle"><span></span><span></span><span></span></button>
+            <ul class="navbar-menu">
+                <li class="navbar-item"><a href="index.html" class="navbar-link">Accueil</a></li>
+                <li class="navbar-item"><a href="universites.html" class="navbar-link">Universités</a></li>
+                <li class="navbar-item"><a href="services.html" class="navbar-link">Nos Services</a></li>
+                <li class="navbar-item navbar-dropdown">
+                    <a href="#" class="navbar-link navbar-dropdown-toggle">Outils Pratiques</a>
+                    <div class="navbar-dropdown-menu">
+                        <a href="code-fiscale.html" class="navbar-dropdown-item">🧮 Calcul Code Fiscale</a>
+                        <a href="verifier-agent.html" class="navbar-dropdown-item">🔍 Vérifier un Agent</a>
+                    </div>
+                </li>
+                <li class="navbar-item"><a href="mediatheque.html" class="navbar-link">Médiathèque</a></li>
+                <li class="navbar-item"><a href="blog.html" class="navbar-link active">Blog</a></li>
+                <li class="navbar-item"><a href="apropos.html" class="navbar-link">À propos</a></li>
+                <li class="navbar-item"><a href="contact.html" class="navbar-link">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div id="post-container">
+        <!-- Loading State -->
+        <div style="height: 60vh; display: flex; align-items: center; justify-content: center;">
+            <div class="spinner"></div>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="footer-section">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4>VistoApplicazione</h4>
+                    <p>Votre partenaire de confiance pour concrétiser votre projet d'étude en Italie. De Douala à Milan,
+                        nous sommes avec vous.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Liens Utiles</h4>
+                    <ul>
+                        <li><a href="universites.html">Universités</a></li>
+                        <li><a href="services.html">Nos Services</a></li>
+                        <li><a href="code-fiscale.html">Code Fiscal</a></li>
+                        <li><a href="mediatheque.html">Médiathèque</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Légal</h4>
+                    <ul>
+                        <li><a href="#">CGV</a></li>
+                        <li><a href="#">Politique de confidentialité</a></li>
+                        <li><a href="#">Mentions légales</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Newsletter</h4>
+                    <p>Recevez les dates limites importantes.</p>
+                    <input type="email" placeholder="Votre email" class="footer-newsletter-input">
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>Fait avec ❤️ pour les étudiants par VistoApplicazione © 2025</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/blog-post.js"></script>
+</body>
+
+</html>

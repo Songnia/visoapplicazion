@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="VISTO - Votre partenaire de confiance pour étudier en Italie. Visa, logement, inscription universitaire et plus encore.">
+    <meta name="keywords"
+        content="étudier en Italie, visa étudiant Italie, universités italiennes, code fiscal italien">
+    <title>VISTO - Étudier en Italie | Plateforme de Mobilité Étudiante</title>
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="css/design-system.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/animations.css">
+
+    <style>
+        /* Homepage specific styles */
+        .hero {
+            position: relative;
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, rgba(15, 76, 129, 0.95), rgba(46, 204, 113, 0.85)),
+                url('images/hero-homepage.png') center/cover;
+            color: white;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 30% 50%, rgba(224, 122, 95, 0.2), transparent 50%);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            color: white;
+            font-size: var(--font-size-6xl);
+            margin-bottom: var(--spacing-lg);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero p {
+            font-size: var(--font-size-xl);
+            margin-bottom: var(--spacing-2xl);
+            max-width: 600px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: var(--spacing-lg);
+            flex-wrap: wrap;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--spacing-xl);
+            margin-top: var(--spacing-3xl);
+        }
+
+        .feature-card {
+            text-align: center;
+        }
+
+        .stats-section {
+            background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark));
+            color: white;
+            padding: var(--spacing-3xl) 0;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--spacing-xl);
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: var(--font-size-5xl);
+            font-weight: var(--font-weight-extrabold);
+            color: var(--color-secondary);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .stat-label {
+            font-size: var(--font-size-lg);
+            opacity: 0.9;
+        }
+
+        .cta-section {
+            background: linear-gradient(135deg, var(--color-secondary), var(--color-secondary-dark));
+            color: white;
+            padding: var(--spacing-4xl) 0;
+            text-align: center;
+        }
+
+        .cta-section h2 {
+            color: white;
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .university-rank {
+            flex-shrink: 0;
+            width: 80px;
+            height: 80px;
+            margin: 0 auto;
+            background: linear-gradient(135deg, var(--color-primary), var(--color-primary-light));
+            border-radius: var(--radius-xl);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: var(--font-size-3xl);
+            font-weight: var(--font-weight-extrabold);
+            color: white;
+            font-family: var(--font-heading);
+        }
+
+        .process-step {
+            background: var(--color-surface);
+            padding: var(--spacing-2xl);
+            border-radius: var(--radius-xl);
+            text-align: center;
+            position: relative;
+        }
+
+        .step-number {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--color-primary), var(--color-primary-light));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: var(--font-size-2xl);
+            font-weight: var(--font-weight-extrabold);
+            color: white;
+            margin: 0 auto var(--spacing-lg);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--spacing-xl);
+            margin-top: var(--spacing-3xl);
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="index.html" class="navbar-logo">
+                VISTO<span>Applicazione</span>
+            </a>
+
+            <button class="navbar-toggle" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <ul class="navbar-menu">
+                <li class="navbar-item">
+                    <a href="index.html" class="navbar-link">Accueil</a>
+                </li>
+                <li class="navbar-item">
+                    <a href="universites.html" class="navbar-link">Universités</a>
+                </li>
+                <li class="navbar-item">
+                    <a href="services.html" class="navbar-link">Nos Services</a>
+                </li>
+                <li class="navbar-item navbar-dropdown">
+                    <a href="#" class="navbar-link navbar-dropdown-toggle">Outils Pratiques</a>
+                    <div class="navbar-dropdown-menu">
+                        <a href="code-fiscale.html" class="navbar-dropdown-item">🧮 Calcul Code Fiscale</a>
+                        <a href="verifier-agent.html" class="navbar-dropdown-item">🔍 Vérifier un Agent</a>
+                    </div>
+                </li>
+                <li class="navbar-item">
+                    <a href="mediatheque.html" class="navbar-link">Médiathèque</a>
+                </li>
+                <li class="navbar-item">
+                    <a href="blog.html" class="navbar-link">Blog</a>
+                </li>
+                <li class="navbar-item">
+                    <a href="apropos.html" class="navbar-link">À propos</a>
+                </li>
+                <li class="navbar-item">
+                    <a href="contact.html" class="navbar-link">Contact</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container hero-content">
+            <h1 class="fade-in">Réalisez Votre Rêve d'Étudier en Italie</h1>
+            <p class="fade-in">
+                Nous Accompagnons les étudiants africains désirants poursuivre les études en Italie !
+                Visa, logement, inscription universitaire - nous vous suivons à chaque étape.
+            </p>
+            <div class="hero-cta fade-in">
+                <a href="services.html" class="btn btn-secondary btn-lg hover-shine">
+                    Découvrir nos services
+                </a>
+                <a href="code-fiscale.html" class="btn btn-outline btn-lg hover-shine">
+                    Calculer mon Code Fiscal
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="py-4xl bg-surface">
+        <div class="container">
+            <div class="text-center mb-3xl">
+                <h2 class="fade-in">Pourquoi Choisir VISTO ?</h2>
+                <p class="text-muted fade-in">Les fonctionnalités qui font la différence</p>
+            </div>
+
+            <div class="features-grid">
+                <div class="feature-card card hover-lift fade-in">
+                    <div class="card-icon">🎓</div>
+                    <h3>Guide Universitaire</h3>
+                    <p class="text-muted">
+                        Découvrez les meilleures universités italiennes, leurs classements, programmes
+                        et critères d'admission.
+                    </p>
+                    <a href="universites.html" class="btn btn-outline mt-md">Découvrir →</a>
+                </div>
+
+                <div class="feature-card card hover-lift fade-in">
+                    <div class="card-icon">✈️</div>
+                    <h3>Accompagnement Complet</h3>
+                    <p class="text-muted">
+                        De la demande de visa à l'installation en Italie, nous vous accompagnons
+                        dans toutes vos démarches.
+                    </p>
+                    <a href="services.html" class="btn btn-outline mt-md">En savoir plus →</a>
+                </div>
+
+                <div class="feature-card card hover-lift fade-in">
+                    <div class="card-icon">📚</div>
+                    <h3>Médiathèque Complète</h3>
+                    <p class="text-muted">
+                        Accédez à tous les documents nécessaires : formulaires de visa, lettres de motivation,
+                        attestations de garant et guides pratiques.
+                    </p>
+                    <a href="mediatheque.html" class="btn btn-outline mt-md">Explorer →</a>
+                </div>
+
+                <div class="feature-card card hover-lift fade-in">
+                    <div class="card-icon">🧮</div>
+                    <h3>Calculateur Code Fiscal</h3>
+                    <p class="text-muted">
+                        Générez instantanément votre Codice Fiscale italien, indispensable pour toutes
+                        vos démarches administratives en Italie.
+                    </p>
+                    <a href="code-fiscale.html" class="btn btn-outline mt-md">Calculer →</a>
+                </div>
+
+                <div class="feature-card card hover-lift fade-in">
+                    <div class="card-icon">🛡️</div>
+                    <h3>Vérification d'Agents</h3>
+                    <p class="text-muted">
+                        Protégez-vous des arnaques ! Vérifiez la fiabilité de votre agent avant de vous engager.
+                        Consultez notre base de données d'agents certifiés.
+                    </p>
+                    <a href="verifier-agent.html" class="btn btn-outline mt-md">Vérifier →</a>
+                </div>
+
+                <div class="feature-card card hover-lift fade-in">
+                    <div class="card-icon">💬</div>
+                    <h3>Support 24/7</h3>
+                    <p class="text-muted">
+                        Une question ? Notre équipe et notre assistant IA sont disponibles pour vous aider
+                        à tout moment.
+                    </p>
+                    <a href="contact.html" class="btn btn-outline mt-md">Nous contacter →</a>
+                </div>
+            </div>
+            <!-- Important Info Section -->
+            <div class="card fade-in mb-3xl mt-3xl"
+                style="background: linear-gradient(135deg, rgba(46, 204, 113, 0.05), rgba(15, 76, 129, 0.05)); border-left: 4px solid var(--color-secondary);">
+                <h3
+                    style="color: var(--color-primary); margin-bottom: var(--spacing-lg); display: flex; align-items: center; gap: var(--spacing-sm);">
+                    Bon à savoir avant de commencer la procédure
+                </h3>
+                <p style="margin-bottom: var(--spacing-lg); color: var(--color-text-secondary);">
+                    Pour optimiser votre demande de visa et accélérer son traitement, utilisez notre guide complet :
+                </p>
+                <ul style="list-style: none; padding: 0; margin: 0; display: grid; gap: var(--spacing-md);">
+                    <li style="display: flex; align-items: start; gap: var(--spacing-md);">
+                        <!--<span style="color: var(--color-secondary); font-size: 1.5rem; flex-shrink: 0;">📋</span>-->
+                        <span><strong>Informations détaillées</strong> : Accédez à toutes les informations sur les types
+                            de visa et les exigences spécifiques selon votre pays d'origine.</span>
+                    </li>
+                    <li style="display: flex; align-items: start; gap: var(--spacing-md);">
+                        <!--<span style="color: var(--color-secondary); font-size: 1.5rem; flex-shrink: 0;">📄</span>-->
+                        <span><strong>Aide à la documentation</strong> : Conseils pratiques pour la collecte des
+                            documents requis (formulaires, justificatifs de revenus, attestation d'hébergement).</span>
+                    </li>
+                    <li style="display: flex; align-items: start; gap: var(--spacing-md);">
+                        <!--<span style="color: var(--color-secondary); font-size: 1.5rem; flex-shrink: 0;">💡</span>-->
+                        <span><strong>Astuces pour éviter les erreurs</strong> : Bénéficiez de recommandations pour
+                            prévenir les accrocs courants et garantir un dossier complet.</span>
+                    </li>
+                    <li style="display: flex; align-items: start; gap: var(--spacing-md);">
+                        <!--<span style="color: var(--color-secondary); font-size: 1.5rem; flex-shrink: 0;">🎯</span>-->
+                        <span><strong>Objectif</strong> : Être mieux préparé et maximiser vos chances de voir votre visa
+                            approuvé rapidement.</span>
+                    </li>
+                </ul>
+                <div
+                    style="margin-top: var(--spacing-lg); padding-top: var(--spacing-lg); border-top: 1px solid rgba(0,0,0,0.1);">
+                    <a href="mediatheque.html" class="btn btn-secondary">Accéder aux documents →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats-section">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item fade-in">
+                    <div class="stat-number">2,500+</div>
+                    <div class="stat-label">Étudiants Accompagnés</div>
+                </div>
+                <div class="stat-item fade-in">
+                    <div class="stat-number">98%</div>
+                    <div class="stat-label">Taux de Réussite Visa</div>
+                </div>
+                <div class="stat-item fade-in">
+                    <div class="stat-number">50+</div>
+                    <div class="stat-label">Universités Partenaires</div>
+                </div>
+                <div class="stat-item fade-in">
+                    <div class="stat-number">15</div>
+                    <div class="stat-label">Villes Italiennes</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section class="py-4xl bg-background">
+        <div class="container">
+            <div class="text-center mb-3xl">
+                <h2 class="fade-in">Comment Ça Marche ?</h2>
+                <p class="text-muted fade-in">Un processus simple en 4 étapes</p>
+            </div>
+
+            <!--<div class="features-grid">
+                <div class="card text-center fade-in">
+                    <div class="university-rank" style="font-size: 3rem; margin-bottom: 1rem;">1</div>
+                    <h3>Orientation</h3>
+                    <p class="text-muted">
+                        Discutez de votre projet avec nos conseillers. Nous évaluons vos besoins
+                        et vous proposons un plan personnalisé: Etudes en Italie, Tourisme en Italie, Immigration en
+                        Italie.
+                    </p>
+                </div>
+
+                <div class="card text-center fade-in">
+                    <div class="university-rank" style="font-size: 3rem; margin-bottom: 1rem;">2</div>
+                    <h3>Choix de l'Université</h3>
+                    <p class="text-muted">
+                        Nous vous aidons à sélectionner les universités et programmes qui correspondent le mieux à votre
+                        profil académique et à vos ambitions.
+                    </p>
+                </div>
+
+                <div class="card text-center fade-in">
+                    <div class="university-rank" style="font-size: 3rem; margin-bottom: 1rem;">3</div>
+                    <h3>Démarches Administratives</h3>
+                    <p class="text-muted">
+                        Nous vous accompagnons dans vos démarches : demande de visa, inscription universitaire,
+                        recherche de logement.
+                    </p>
+                </div>
+
+                <div class="card text-center fade-in">
+                    <div class="university-rank" style="font-size: 3rem; margin-bottom: 1rem;">4</div>
+                    <h3>Installation en Italie</h3>
+                    <p class="text-muted">
+                        Arrivée en Italie facilitée : accueil à l'aéroport, installation dans votre logement,
+                        ouverture de compte bancaire.
+                    </p>
+                </div>
+            </div>-->
+            <div class="features-grid gap-xl">
+                <a href="contact.html" class="process-step fade-in"
+                    style="text-decoration: none; color: inherit; display: block; height: 100%;">
+                    <div class="step-number">1</div>
+                    <h4>Orientation</h4>
+                    <p class="text-muted">
+                        Discutez de votre projet avec nos conseillers. Nous évaluons vos besoins et vous proposons un
+                        plan personnalisé.
+                    </p>
+                    <div class="mt-md text-primary font-semibold">Discuter de mon projet →</div>
+                </a>
+
+                <a href="universites.html" class="process-step fade-in"
+                    style="text-decoration: none; color: inherit; display: block; height: 100%;">
+                    <div class="step-number">2</div>
+                    <h4>Choix de l'Université</h4>
+                    <p class="text-muted">
+                        Nous vous aidons à sélectionner les universités et programmes qui correspondent le mieux à votre
+                        profil.
+                    </p>
+                    <div class="mt-md text-primary font-semibold">Voir les universités →</div>
+                </a>
+
+                <a href="mediatheque.html" class="process-step fade-in"
+                    style="text-decoration: none; color: inherit; display: block; height: 100%;">
+                    <div class="step-number">3</div>
+                    <h4>Démarches & Visa</h4>
+                    <p class="text-muted">
+                        Accédez à tous les documents nécessaires pour votre demande de visa et inscription
+                        universitaire.
+                    </p>
+                    <div class="mt-md text-primary font-semibold">Accéder aux documents →</div>
+                </a>
+
+                <a href="code-fiscale.html" class="process-step fade-in"
+                    style="text-decoration: none; color: inherit; display: block; height: 100%;">
+                    <div class="step-number">4</div>
+                    <h4>Installation</h4>
+                    <p class="text-muted">
+                        Préparez votre arrivée : code fiscal, logement et ouverture de compte bancaire.
+                    </p>
+                    <div class="mt-md text-primary font-semibold">Préparer mon arrivée →</div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <h2 class="fade-in">Prêt à Commencer Votre Aventure Italienne ?</h2>
+            <p class="fade-in" style="font-size: var(--font-size-xl); margin-bottom: var(--spacing-2xl);">
+                Rejoignez des milliers d'étudiants qui ont réalisé leur rêve avec VISTO
+            </p>
+            <div class="fade-in">
+                <a href="contact.html" class="btn btn-accent btn-lg hover-shine">
+                    Contactez-nous Maintenant
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <!-- FOOTER -->
+    <footer class="footer-section">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4>VistoApplicazione</h4>
+                    <p>Votre partenaire de confiance pour concrétiser votre projet d'étude en Italie. De Douala à Milan,
+                        nous sommes avec vous.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Liens Utiles</h4>
+                    <ul>
+                        <li><a href="universites.html">Universités</a></li>
+                        <li><a href="services.html">Nos Services</a></li>
+                        <li><a href="code-fiscale.html">Code Fiscal</a></li>
+                        <li><a href="mediatheque.html">Médiathèque</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Légal</h4>
+                    <ul>
+                        <li><a href="#">CGV</a></li>
+                        <li><a href="#">Politique de confidentialité</a></li>
+                        <li><a href="#">Mentions légales</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Newsletter</h4>
+                    <p>Recevez les dates limites importantes.</p>
+                    <input type="email" placeholder="Votre email" class="footer-newsletter-input">
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>Fait avec ❤️ pour les étudiants par VistoApplicazione © 2025</p>
+            </div>
+        </div>
+    </footer>
+
+
+    <!-- WhatsApp Widget -->
+    <div class="floating-widget whatsapp-widget">
+        <button class="widget-button" aria-label="Contact WhatsApp">
+            💬
+        </button>
+        <div class="widget-tooltip">Besoin d'aide ?</div>
+    </div>
+
+    <!-- AI Assistant Widget -->
+    <a href="https://chatgpt.com/g/g-6864e18a99688191a39104a164c7b6d9-fabrizio-ia" target="_blank"
+        class="floating-widget ai-widget" style="text-decoration: none;">
+        <button class="widget-button" aria-label="Assistant IA">
+            🤖
+        </button>
+        <div class="widget-tooltip">Assistant IA
+    </a>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/main.js"></script>
+</body>
+
+</html>

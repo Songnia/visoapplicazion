@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Blog VISTO - Actualités, conseils et guides pour étudier en Italie">
+    <title>Blog - Actualités & Conseils | VISTO</title>
+
+    <link rel="stylesheet" href="css/design-system.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/animations.css">
+
+    <style>
+        .page-header {
+            background: linear-gradient(135deg, var(--color-accent), var(--color-accent-dark));
+            color: white;
+            padding: var(--spacing-4xl) 0;
+            text-align: center;
+        }
+
+        .page-header h1 {
+            color: white;
+        }
+
+        .blog-card {
+            background: var(--color-surface);
+            border-radius: var(--radius-xl);
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            transition: all var(--transition-base);
+        }
+
+        .blog-card:hover {
+            box-shadow: var(--shadow-xl);
+            transform: translateY(-5px);
+        }
+
+        .blog-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+        }
+
+        .blog-content {
+            padding: var(--spacing-xl);
+        }
+
+        .blog-meta {
+            display: flex;
+            gap: var(--spacing-md);
+            font-size: var(--font-size-sm);
+            color: var(--color-text-secondary);
+            margin-bottom: var(--spacing-md);
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="index.html" class="navbar-logo">VISTO<span>Applicazione</span></a>
+            <button class="navbar-toggle"><span></span><span></span><span></span></button>
+            <ul class="navbar-menu">
+                <li class="navbar-item"><a href="index.html" class="navbar-link">Accueil</a></li>
+                <li class="navbar-item"><a href="universites.html" class="navbar-link">Universités</a></li>
+                <li class="navbar-item"><a href="services.html" class="navbar-link">Nos Services</a></li>
+                <li class="navbar-item navbar-dropdown">
+                    <a href="#" class="navbar-link navbar-dropdown-toggle">Outils Pratiques</a>
+                    <div class="navbar-dropdown-menu">
+                        <a href="code-fiscale.html" class="navbar-dropdown-item">🧮 Calcul Code Fiscale</a>
+                        <a href="verifier-agent.html" class="navbar-dropdown-item">🔍 Vérifier un Agent</a>
+                    </div>
+                </li>
+                <li class="navbar-item"><a href="mediatheque.html" class="navbar-link">Médiathèque</a></li>
+                <li class="navbar-item"><a href="blog.html" class="navbar-link">Blog</a></li>
+                <li class="navbar-item"><a href="apropos.html" class="navbar-link">À propos</a></li>
+                <li class="navbar-item"><a href="contact.html" class="navbar-link">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="page-header">
+        <div class="container">
+            <h1 class="fade-in">📝 Blog VISTO</h1>
+            <p class="fade-in" style="font-size: var(--font-size-lg);">
+                Actualités, conseils et guides pour réussir vos études en Italie
+            </p>
+        </div>
+    </section>
+
+    <section class="py-4xl">
+        <div class="container">
+            <!-- Search and Filters -->
+            <div class="blog-controls" style="margin-bottom: var(--spacing-3xl);">
+                <!-- Search Bar -->
+                <div class="search-container" style="margin-bottom: var(--spacing-xl);">
+                    <input type="text" id="blog-search" placeholder="🔍 Rechercher un article..." class="search-input"
+                        style="width: 100%; max-width: 500px; padding: var(--spacing-md) var(--spacing-lg); border: 2px solid var(--color-border); border-radius: var(--radius-lg); font-size: var(--font-size-base);">
+                </div>
+
+                <!-- Category Filters -->
+                <div id="category-filters" class="category-filters"
+                    style="display: flex; flex-wrap: wrap; gap: var(--spacing-md); justify-content: center;">
+                    <!-- Filters will be dynamically loaded -->
+                </div>
+            </div>
+
+            <!-- Blog Posts Grid -->
+            <div id="blog-posts-container" class="grid grid-cols-3 gap-xl">
+                <!-- Posts will be dynamically loaded -->
+                <div style="grid-column: 1 / -1; text-align: center; padding: var(--spacing-4xl);">
+                    <p style="color: var(--color-text-secondary);">Chargement des articles...</p>
+                </div>
+            </div>
+
+            <!-- Pagination -->
+            <div id="pagination-container" style="margin-top: var(--spacing-3xl);">
+                <!-- Pagination will be dynamically loaded -->
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer-section">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4>VistoApplicazione</h4>
+                    <p>Votre partenaire de confiance pour concrétiser votre projet d'étude en Italie. De Douala à Milan,
+                        nous sommes avec vous.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Liens Utiles</h4>
+                    <ul>
+                        <li><a href="universites.html">Universités</a></li>
+                        <li><a href="services.html">Nos Services</a></li>
+                        <li><a href="code-fiscale.html">Code Fiscal</a></li>
+                        <li><a href="mediatheque.html">Médiathèque</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Légal</h4>
+                    <ul>
+                        <li><a href="#">CGV</a></li>
+                        <li><a href="#">Politique de confidentialité</a></li>
+                        <li><a href="#">Mentions légales</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Newsletter</h4>
+                    <p>Recevez les dates limites importantes.</p>
+                    <input type="email" placeholder="Votre email" class="footer-newsletter-input">
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>Fait avec ❤️ pour les étudiants par VistoApplicazione © 2025</p>
+            </div>
+        </div>
+    </footer>
+
+    <div class="floating-widget whatsapp-widget">
+        <button class="widget-button">💬</button>
+        <div class="widget-tooltip">Besoin d'aide ?</div>
+    </div>
+    <a href="https://chatgpt.com/g/g-6864e18a99688191a39104a164c7b6d9-fabrizio-ia" target="_blank"
+        class="floating-widget ai-widget" style="text-decoration: none;">
+        <button class="widget-button">🤖</button>
+        <div class="widget-tooltip">Assistant IA
+    </a>
+    </div>
+
+    <script src="js/main.js"></script>
+    <script src="js/blog.js"></script>
+
+</body>
+
+</html>

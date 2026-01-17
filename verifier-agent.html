@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Vérifiez la fiabilité d'un agent de mobilité étudiante - Protégez-vous des arnaques avec VISTO">
+    <meta name="keywords" content="vérifier agent, agent certifié, arnaque visa, agent fiable Italie">
+    <title>Vérifier un Agent - Protection Anti-Arnaque | VISTO</title>
+
+    <link rel="stylesheet" href="css/design-system.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/animations.css">
+
+    <style>
+        .page-header {
+            background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark));
+            color: white;
+            padding: var(--spacing-4xl) 0 var(--spacing-3xl);
+            text-align: center;
+        }
+
+        .page-header h1 {
+            color: white;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .search-container {
+            max-width: 700px;
+            margin: calc(-1 * var(--spacing-2xl)) auto var(--spacing-3xl);
+            position: relative;
+            z-index: 10;
+        }
+
+        .verification-result {
+            max-width: 900px;
+            margin: 0 auto var(--spacing-3xl);
+            background: var(--color-surface);
+            border-radius: var(--radius-2xl);
+            box-shadow: var(--shadow-xl);
+            padding: var(--spacing-3xl);
+        }
+
+        .verification-header {
+            text-align: center;
+            margin-bottom: var(--spacing-2xl);
+            padding-bottom: var(--spacing-2xl);
+            border-bottom: 2px solid var(--color-background);
+        }
+
+        .verification-icon {
+            width: 100px;
+            height: 100px;
+            margin: 0 auto var(--spacing-lg);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+        }
+
+        .verification-icon.success {
+            background: rgba(46, 204, 113, 0.1);
+        }
+
+        .verification-icon.error {
+            background: rgba(231, 76, 60, 0.1);
+        }
+
+        .verification-icon.warning {
+            background: rgba(243, 156, 18, 0.1);
+        }
+
+        .agent-main-info {
+            margin-bottom: var(--spacing-2xl);
+        }
+
+        .agent-meta {
+            display: flex;
+            gap: var(--spacing-sm);
+            flex-wrap: wrap;
+            margin: var(--spacing-md) 0;
+        }
+
+        .agent-rating {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+            margin-top: var(--spacing-md);
+        }
+
+        .stars {
+            color: #FFD700;
+        }
+
+        .rating-value {
+            font-weight: var(--font-weight-bold);
+            color: var(--color-primary);
+        }
+
+        .agent-info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: var(--spacing-lg);
+            margin: var(--spacing-2xl) 0;
+        }
+
+        .info-item {
+            padding: var(--spacing-lg);
+            background: var(--color-background);
+            border-radius: var(--radius-lg);
+        }
+
+        .info-label {
+            font-size: var(--font-size-sm);
+            color: var(--color-text-secondary);
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .info-value {
+            font-weight: var(--font-weight-semibold);
+            color: var(--color-text-primary);
+        }
+
+        .agent-contact {
+            margin: var(--spacing-2xl) 0;
+            padding: var(--spacing-xl);
+            background: var(--color-background);
+            border-radius: var(--radius-lg);
+        }
+
+        .contact-grid {
+            display: grid;
+            gap: var(--spacing-md);
+            margin-top: var(--spacing-md);
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-md);
+        }
+
+        .contact-icon {
+            font-size: var(--font-size-xl);
+        }
+
+        .trust-indicators {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--spacing-md);
+            margin-top: var(--spacing-2xl);
+            padding: var(--spacing-xl);
+            background: rgba(46, 204, 113, 0.05);
+            border-radius: var(--radius-lg);
+        }
+
+        .trust-item {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+            font-size: var(--font-size-sm);
+        }
+
+        .trust-icon {
+            font-size: var(--font-size-xl);
+        }
+
+        .alert {
+            padding: var(--spacing-xl);
+            border-radius: var(--radius-lg);
+            margin: var(--spacing-lg) 0;
+        }
+
+        .alert-danger {
+            background: rgba(231, 76, 60, 0.1);
+            border: 2px solid var(--color-error);
+        }
+
+        .alert-warning {
+            background: rgba(243, 156, 18, 0.1);
+            border: 2px solid var(--color-warning);
+        }
+
+        #verification-results {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="index.html" class="navbar-logo">VISTO<span>Applicazione</span></a>
+            <button class="navbar-toggle" aria-label="Toggle navigation">
+                <span></span><span></span><span></span>
+            </button>
+            <ul class="navbar-menu">
+                <li class="navbar-item"><a href="index.html" class="navbar-link">Accueil</a></li>
+                <li class="navbar-item"><a href="universites.html" class="navbar-link">Universités</a></li>
+                <li class="navbar-item"><a href="services.html" class="navbar-link">Nos Services</a></li>
+                <li class="navbar-item navbar-dropdown">
+                    <a href="#" class="navbar-link navbar-dropdown-toggle">Outils Pratiques</a>
+                    <div class="navbar-dropdown-menu">
+                        <a href="code-fiscale.html" class="navbar-dropdown-item">🧮 Calcul Code Fiscale</a>
+                        <a href="verifier-agent.html" class="navbar-dropdown-item">🔍 Vérifier un Agent</a>
+                    </div>
+                </li>
+                <li class="navbar-item"><a href="mediatheque.html" class="navbar-link">Médiathèque</a></li>
+                <li class="navbar-item"><a href="blog.html" class="navbar-link">Blog</a></li>
+                <li class="navbar-item"><a href="apropos.html" class="navbar-link">À propos</a></li>
+                <li class="navbar-item"><a href="contact.html" class="navbar-link">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1 class="fade-in">🔍 Vérifier un Agent</h1>
+            <p class="fade-in" style="font-size: var(--font-size-lg); max-width: 700px; margin: 0 auto;">
+                Protégez-vous des arnaques ! Vérifiez la fiabilité d'un agent avant de vous engager
+            </p>
+        </div>
+    </section>
+
+    <!-- Search Section -->
+    <section class="py-4xl">
+        <div class="search-container">
+            <div class="card fade-in">
+                <form id="agent-search-form">
+                    <div class="form-group">
+                        <label for="agent-search" class="form-label">Nom de l'agent ou numéro d'enregistrement</label>
+                        <input type="text" id="agent-search" class="form-input"
+                            placeholder="Ex: StudyItaly Pro, IT-2023-001" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-lg" style="width: 100%;">
+                        Vérifier maintenant
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Results Container -->
+        <div id="verification-results"></div>
+    </section>
+
+    <!-- Info Section -->
+    <section class="py-4xl bg-background">
+        <div class="container container-narrow">
+            <h2 class="text-center mb-3xl fade-in">Pourquoi Vérifier Votre Agent ?</h2>
+
+            <div class="grid grid-cols-2 gap-xl">
+                <div class="card text-center fade-in">
+                    <div style="font-size: 3rem; margin-bottom: var(--spacing-md);">⚠️</div>
+                    <h3>Arnaques Fréquentes</h3>
+                    <p class="text-muted">
+                        Le secteur de la mobilité étudiante est malheureusement touché par des agents frauduleux
+                        qui profitent de la vulnérabilité des étudiants.
+                    </p>
+                </div>
+
+                <div class="card text-center fade-in">
+                    <div style="font-size: 3rem; margin-bottom: var(--spacing-md);">🛡️</div>
+                    <h3>Protection Garantie</h3>
+                    <p class="text-muted">
+                        Notre base de données d'agents vérifiés vous permet de travailler en toute confiance
+                        avec des professionnels certifiés.
+                    </p>
+                </div>
+
+                <div class="card text-center fade-in">
+                    <div style="font-size: 3rem; margin-bottom: var(--spacing-md);">✅</div>
+                    <h3>Agents Certifiés</h3>
+                    <p class="text-muted">
+                        Tous nos agents partenaires sont vérifiés : identité, documents, avis clients,
+                        et absence de plaintes.
+                    </p>
+                </div>
+
+                <div class="card text-center fade-in">
+                    <div style="font-size: 3rem; margin-bottom: var(--spacing-md);">📊</div>
+                    <h3>Transparence Totale</h3>
+                    <p class="text-muted">
+                        Consultez les évaluations, le nombre d'étudiants aidés, les spécialisations
+                        et les certifications de chaque agent.
+                    </p>
+                </div>
+            </div>
+
+            <div class="text-center mt-3xl">
+                <a href="contact.html" class="btn btn-primary btn-lg">
+                    Signaler un agent suspect
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer-section">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4>VistoApplicazione</h4>
+                    <p>Votre partenaire de confiance pour concrétiser votre projet d'étude en Italie. De Douala à Milan,
+                        nous sommes avec vous.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Liens Utiles</h4>
+                    <ul>
+                        <li><a href="universites.html">Universités</a></li>
+                        <li><a href="services.html">Nos Services</a></li>
+                        <li><a href="code-fiscale.html">Code Fiscal</a></li>
+                        <li><a href="mediatheque.html">Médiathèque</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Légal</h4>
+                    <ul>
+                        <li><a href="#">CGV</a></li>
+                        <li><a href="#">Politique de confidentialité</a></li>
+                        <li><a href="#">Mentions légales</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Newsletter</h4>
+                    <p>Recevez les dates limites importantes.</p>
+                    <input type="email" placeholder="Votre email" class="footer-newsletter-input">
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>Fait avec ❤️ pour les étudiants par VistoApplicazione © 2025</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp & AI Widgets -->
+    <div class="floating-widget whatsapp-widget">
+        <button class="widget-button" aria-label="Contact WhatsApp">💬</button>
+        <div class="widget-tooltip">Besoin d'aide ?</div>
+    </div>
+    <a href="https://chatgpt.com/g/g-6864e18a99688191a39104a164c7b6d9-fabrizio-ia" target="_blank" class="floating-widget ai-widget" style="text-decoration: none;">
+        <button class="widget-button" aria-label="Assistant IA">🤖</button>
+        <div class="widget-tooltip">Assistant IA</a>
+    </div>
+
+    <script src="js/main.js"></script>
+    <script src="js/agent-verification.js"></script>
+</body>
+
+</html>

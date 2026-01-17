@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Médiathèque VISTO - Tous les documents nécessaires pour étudier en Italie : formulaires visa, lettres de motivation, guides pratiques">
+    <meta name="keywords" content="documents visa Italie, formulaires étudiant, lettre motivation, garant">
+    <title>Médiathèque - Documents pour Étudier en Italie | VISTO</title>
+
+    <link rel="stylesheet" href="css/design-system.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/animations.css">
+
+    <style>
+        .page-header {
+            background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark));
+            color: white;
+            padding: var(--spacing-4xl) 0 var(--spacing-3xl);
+            text-align: center;
+        }
+
+        .page-header h1 {
+            color: white;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .search-container {
+            max-width: 600px;
+            margin: calc(-1 * var(--spacing-2xl)) auto var(--spacing-3xl);
+            position: relative;
+            z-index: 10;
+        }
+
+        .search-input-wrapper {
+            position: relative;
+        }
+
+        .search-input-wrapper input {
+            width: 100%;
+            padding: var(--spacing-lg) var(--spacing-xl);
+            padding-left: 50px;
+            font-size: var(--font-size-lg);
+            border: none;
+            border-radius: var(--radius-xl);
+            box-shadow: var(--shadow-2xl);
+        }
+
+        .search-input-wrapper::before {
+            content: '🔍';
+            position: absolute;
+            left: var(--spacing-lg);
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: var(--font-size-xl);
+        }
+
+        .folder-card {
+            cursor: pointer;
+            transition: all var(--transition-base);
+        }
+
+        .folder-icon {
+            font-size: 3rem;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .folder-name {
+            font-size: var(--font-size-xl);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .folder-description {
+            color: var(--color-text-secondary);
+            font-size: var(--font-size-sm);
+        }
+
+        .folder-meta {
+            margin-top: var(--spacing-md);
+            padding-top: var(--spacing-md);
+            border-top: 1px solid var(--color-background);
+        }
+
+        .document-row {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-lg);
+            padding: var(--spacing-lg);
+            background: var(--color-surface);
+            border-radius: var(--radius-lg);
+            margin-bottom: var(--spacing-md);
+            transition: all var(--transition-fast);
+        }
+
+        .document-row:hover {
+            box-shadow: var(--shadow-md);
+            transform: translateX(5px);
+        }
+
+        .document-icon {
+            font-size: 2rem;
+            flex-shrink: 0;
+        }
+
+        .document-info {
+            flex: 1;
+        }
+
+        .document-name {
+            font-weight: var(--font-weight-semibold);
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .document-meta {
+            font-size: var(--font-size-sm);
+            color: var(--color-text-secondary);
+        }
+
+        .document-actions {
+            flex-shrink: 0;
+        }
+
+        #documents-view {
+            display: none;
+        }
+
+        #search-results {
+            display: none;
+        }
+
+        .no-results {
+            text-align: center;
+            padding: var(--spacing-4xl);
+            color: var(--color-text-secondary);
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="index.html" class="navbar-logo">VISTO<span>Applicazione</span></a>
+            <button class="navbar-toggle" aria-label="Toggle navigation">
+                <span></span><span></span><span></span>
+            </button>
+            <ul class="navbar-menu">
+                <li class="navbar-item"><a href="index.html" class="navbar-link">Accueil</a></li>
+                <li class="navbar-item"><a href="universites.html" class="navbar-link">Universités</a></li>
+                <li class="navbar-item"><a href="services.html" class="navbar-link">Nos Services</a></li>
+                <li class="navbar-item navbar-dropdown">
+                    <a href="#" class="navbar-link navbar-dropdown-toggle">Outils Pratiques</a>
+                    <div class="navbar-dropdown-menu">
+                        <a href="code-fiscale.html" class="navbar-dropdown-item">🧮 Calcul Code Fiscale</a>
+                        <a href="verifier-agent.html" class="navbar-dropdown-item">🔍 Vérifier un Agent</a>
+                    </div>
+                </li>
+                <li class="navbar-item"><a href="mediatheque.html" class="navbar-link">Médiathèque</a></li>
+                <li class="navbar-item"><a href="blog.html" class="navbar-link">Blog</a></li>
+                <li class="navbar-item"><a href="apropos.html" class="navbar-link">À propos</a></li>
+                <li class="navbar-item"><a href="contact.html" class="navbar-link">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1 class="fade-in">📚 Médiathèque VISTO</h1>
+            <p class="fade-in" style="font-size: var(--font-size-lg); max-width: 700px; margin: 0 auto;">
+                Tous les documents dont vous avez besoin pour réussir votre projet d'études en Italie
+            </p>
+        </div>
+    </section>
+
+    <!-- Search Bar -->
+    <div class="search-container">
+        <div class="search-input-wrapper">
+            <input type="text" id="mediatheque-search" placeholder="Rechercher un document..." class="fade-in">
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <section class="py-4xl">
+        <div class="container">
+            <!-- Folders View -->
+            <div id="folders-view">
+                <div id="folders-container" class="grid grid-cols-3 gap-xl"></div>
+            </div>
+
+            <!-- Documents View -->
+            <div id="documents-view">
+                <div class="mb-xl">
+                    <button id="back-to-folders" class="btn btn-outline">
+                        ← Retour aux dossiers
+                    </button>
+                </div>
+                <h2 id="folder-title" class="mb-xl"></h2>
+                <div id="documents-container"></div>
+            </div>
+
+            <!-- Search Results -->
+            <div id="search-results"></div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer-section">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4>VistoApplicazione</h4>
+                    <p>Votre partenaire de confiance pour concrétiser votre projet d'étude en Italie. De Douala à Milan,
+                        nous sommes avec vous.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Liens Utiles</h4>
+                    <ul>
+                        <li><a href="universites.html">Universités</a></li>
+                        <li><a href="services.html">Nos Services</a></li>
+                        <li><a href="code-fiscale.html">Code Fiscal</a></li>
+                        <li><a href="mediatheque.html">Médiathèque</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Légal</h4>
+                    <ul>
+                        <li><a href="#">CGV</a></li>
+                        <li><a href="#">Politique de confidentialité</a></li>
+                        <li><a href="#">Mentions légales</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Newsletter</h4>
+                    <p>Recevez les dates limites importantes.</p>
+                    <input type="email" placeholder="Votre email" class="footer-newsletter-input">
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>Fait avec ❤️ pour les étudiants par VistoApplicazione © 2025</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp & AI Widgets -->
+    <div class="floating-widget whatsapp-widget">
+        <button class="widget-button" aria-label="Contact WhatsApp">💬</button>
+        <div class="widget-tooltip">Besoin d'aide ?</div>
+    </div>
+    <a href="https://chatgpt.com/g/g-6864e18a99688191a39104a164c7b6d9-fabrizio-ia" target="_blank" class="floating-widget ai-widget" style="text-decoration: none;">
+        <button class="widget-button" aria-label="Assistant IA">🤖</button>
+        <div class="widget-tooltip">Assistant IA</a>
+    </div>
+
+    <script src="js/main.js"></script>
+    <script src="js/mediatheque.js"></script>
+</body>
+
+</html>

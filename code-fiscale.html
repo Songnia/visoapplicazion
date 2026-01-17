@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Calculateur de Code Fiscal Italien (Codice Fiscale) - Générez instantanément votre code fiscal pour vos démarches en Italie">
+    <meta name="keywords" content="code fiscal italien, codice fiscale, calculateur, Italie, étudiant">
+    <title>Calculateur Code Fiscal Italien | VISTO</title>
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="css/design-system.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/animations.css">
+
+    <style>
+        .page-header {
+            background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark));
+            color: white;
+            padding: var(--spacing-4xl) 0 var(--spacing-3xl);
+            text-align: center;
+        }
+
+        .page-header h1 {
+            color: white;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .calculator-container {
+            max-width: 800px;
+            margin: calc(-1 * var(--spacing-3xl)) auto var(--spacing-4xl);
+            position: relative;
+            z-index: 10;
+        }
+
+        .calculator-card {
+            background: var(--color-surface);
+            border-radius: var(--radius-2xl);
+            box-shadow: var(--shadow-2xl);
+            padding: var(--spacing-3xl);
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--spacing-lg);
+            margin-bottom: var(--spacing-lg);
+        }
+
+        #result-container {
+            display: none;
+            margin-top: var(--spacing-3xl);
+            padding: var(--spacing-2xl);
+            background: linear-gradient(135deg, rgba(46, 204, 113, 0.1), rgba(46, 204, 113, 0.05));
+            border-radius: var(--radius-xl);
+            border: 2px solid var(--color-secondary);
+        }
+
+        #result-code {
+            font-size: var(--font-size-4xl);
+            font-weight: var(--font-weight-extrabold);
+            font-family: var(--font-heading);
+            color: var(--color-primary);
+            text-align: center;
+            letter-spacing: 4px;
+            margin: var(--spacing-xl) 0;
+            padding: var(--spacing-lg);
+            background: var(--color-surface);
+            border-radius: var(--radius-lg);
+        }
+
+        .breakdown-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: var(--spacing-md);
+            margin: var(--spacing-xl) 0;
+        }
+
+        .breakdown-item {
+            text-align: center;
+            padding: var(--spacing-md);
+            background: var(--color-surface);
+            border-radius: var(--radius-md);
+        }
+
+        .breakdown-label {
+            font-size: var(--font-size-sm);
+            color: var(--color-text-secondary);
+            display: block;
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .breakdown-value {
+            font-size: var(--font-size-xl);
+            font-weight: var(--font-weight-bold);
+            color: var(--color-primary);
+            font-family: var(--font-heading);
+        }
+
+        .info-section {
+            background: var(--color-background);
+            padding: var(--spacing-4xl) 0;
+        }
+
+        .info-card {
+            background: var(--color-surface);
+            padding: var(--spacing-xl);
+            border-radius: var(--radius-xl);
+            margin-bottom: var(--spacing-lg);
+            border-left: 4px solid var(--color-secondary);
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="index.html" class="navbar-logo">
+                VISTO<span>Applicazione</span>
+            </a>
+
+            <button class="navbar-toggle" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <ul class="navbar-menu">
+                <li class="navbar-item">
+                    <a href="index.html" class="navbar-link">Accueil</a>
+                </li>
+                <li class="navbar-item">
+                    <a href="universites.html" class="navbar-link">Universités</a>
+                </li>
+                <li class="navbar-item">
+                    <a href="services.html" class="navbar-link">Nos Services</a>
+                </li>
+                <li class="navbar-item navbar-dropdown">
+                    <a href="#" class="navbar-link navbar-dropdown-toggle">Outils Pratiques</a>
+                    <div class="navbar-dropdown-menu">
+                        <a href="code-fiscale.html" class="navbar-dropdown-item">🧮 Calcul Code Fiscale</a>
+                        <a href="verifier-agent.html" class="navbar-dropdown-item">🔍 Vérifier un Agent</a>
+                    </div>
+                </li>
+                <li class="navbar-item">
+                    <a href="mediatheque.html" class="navbar-link">Médiathèque</a>
+                </li>
+                <li class="navbar-item">
+                    <a href="blog.html" class="navbar-link">Blog</a>
+                </li>
+                <li class="navbar-item">
+                    <a href="apropos.html" class="navbar-link">À propos</a>
+                </li>
+                <li class="navbar-item">
+                    <a href="contact.html" class="navbar-link">Contact</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1 class="fade-in">🧮 Calculateur de Code Fiscal Italien</h1>
+            <p class="fade-in" style="font-size: var(--font-size-lg); max-width: 700px; margin: 0 auto;">
+                Générez instantanément votre Codice Fiscale, indispensable pour toutes vos démarches administratives en
+                Italie
+            </p>
+        </div>
+    </section>
+
+    <!-- Calculator Section -->
+    <section class="py-4xl">
+        <div class="calculator-container">
+            <div class="calculator-card fade-in">
+                <h2 class="text-center mb-xl">Calculez Votre Code Fiscal</h2>
+
+                <form id="codice-fiscale-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="surname" class="form-label">Nom de famille *</label>
+                            <input type="text" id="surname" class="form-input" required placeholder="ROSSI">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="name" class="form-label">Prénom *</label>
+                            <input type="text" id="name" class="form-input" required placeholder="MARIO">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="birthDate" class="form-label">Date de naissance *</label>
+                            <input type="date" id="birthDate" class="form-input" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="gender" class="form-label">Sexe *</label>
+                            <select id="gender" class="form-select" required>
+                                <option value="">Sélectionnez...</option>
+                                <option value="M">Masculin</option>
+                                <option value="F">Féminin</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="birthPlace" class="form-label">Pays de naissance *</label>
+                        <select id="birthPlace" class="form-select" required>
+                            <option value="">-- Sélectionnez un pays --</option>
+                            <option value="Z172">Italie (Z172)</option>
+                            <option value="Z100">Afghanistan (Z100)</option>
+                            <option value="Z101">Albanie (Z101)</option>
+                            <option value="Z102">Algérie (Z102)</option>
+                            <option value="Z103">Andorre (Z103)</option>
+                            <option value="Z104">Angola (Z104)</option>
+                            <option value="Z105">Antigua-et-Barbuda (Z105)</option>
+                            <option value="Z106">Argentine (Z106)</option>
+                            <option value="Z107">Australie (Z107)</option>
+                            <option value="Z108">Arménie (Z108)</option>
+                            <option value="Z109">Autriche (Z109)</option>
+                            <option value="Z110">Azerbaïdjan (Z110)</option>
+                            <option value="Z111">Bangladesh (Z111)</option>
+                            <option value="Z112">Barbade (Z112)</option>
+                            <option value="Z113">Bénin (Z113)</option>
+                            <option value="Z114">Bhoutan (Z114)</option>
+                            <option value="Z115">Bolivie (Z115)</option>
+                            <option value="Z116">Bosnie-Herzégovine (Z116)</option>
+                            <option value="Z117">Brésil (Z117)</option>
+                            <option value="Z118">Brunei (Z118)</option>
+                            <option value="Z119">Belgique (Z119)</option>
+                            <option value="Z120">Bulgarie (Z120)</option>
+                            <option value="Z121">Burkina Faso (Z121)</option>
+                            <option value="Z122">Burundi (Z122)</option>
+                            <option value="Z123">Cambodge (Z123)</option>
+                            <option value="Z306">Cameroun (Z306)</option>
+                            <option value="Z124">Canada (Z124)</option>
+                            <option value="Z125">Cap-Vert (Z125)</option>
+                            <option value="Z127">Chili (Z127)</option>
+                            <option value="Z128">Chine (Z128)</option>
+                            <option value="Z129">Chypre (Z129)</option>
+                            <option value="Z130">Colombie (Z130)</option>
+                            <option value="Z131">Comores (Z131)</option>
+                            <option value="Z132">Congo (Z132)</option>
+                            <option value="Z133">Île de Cook (Z133)</option>
+                            <option value="Z134">Costa Rica (Z134)</option>
+                            <option value="Z135">Côte d'Ivoire (Z135)</option>
+                            <option value="Z136">Croatie (Z136)</option>
+                            <option value="Z137">Cuba (Z137)</option>
+                            <option value="Z138">Danemark (Z138)</option>
+                            <option value="Z139">Djibouti (Z139)</option>
+                            <option value="Z140">Dominique (Z140)</option>
+                            <option value="Z141">Égypte (Z141)</option>
+                            <option value="Z142">Émirats arabes unis (Z142)</option>
+                            <option value="Z143">Équateur (Z143)</option>
+                            <option value="Z144">Érythrée (Z144)</option>
+                            <option value="Z145">Espagne (Z145)</option>
+                            <option value="Z146">Estonie (Z146)</option>
+                            <option value="Z147">États-Unis (Z147)</option>
+                            <option value="Z148">Éthiopie (Z148)</option>
+                            <option value="Z149">Fidji (Z149)</option>
+                            <option value="Z150">Finlande (Z150)</option>
+                            <option value="Z151">France (Z151)</option>
+                            <option value="Z152">Gabon (Z152)</option>
+                            <option value="Z153">Gambie (Z153)</option>
+                            <option value="Z154">Géorgie (Z154)</option>
+                            <option value="Z155">Ghana (Z155)</option>
+                            <option value="Z156">Grèce (Z156)</option>
+                            <option value="Z157">Grenade (Z157)</option>
+                            <option value="Z158">Guatemala (Z158)</option>
+                            <option value="Z159">Guinée (Z159)</option>
+                            <option value="Z160">Guinée équatoriale (Z160)</option>
+                            <option value="Z161">Guyana (Z161)</option>
+                            <option value="Z162">Haïti (Z162)</option>
+                            <option value="Z163">Honduras (Z163)</option>
+                            <option value="Z164">Hongrie (Z164)</option>
+                            <option value="Z165">Inde (Z165)</option>
+                            <option value="Z166">Indonésie (Z166)</option>
+                            <option value="Z167">Irak (Z167)</option>
+                            <option value="Z168">Iran (Z168)</option>
+                            <option value="Z169">Irlande (Z169)</option>
+                            <option value="Z170">Islande (Z170)</option>
+                            <option value="Z171">Israël (Z171)</option>
+                            <option value="Z172">Italie (Z172)</option>
+                            <option value="Z173">Jamaïque (Z173)</option>
+                            <option value="Z174">Japon (Z174)</option>
+                            <option value="Z175">Jordanie (Z175)</option>
+                            <option value="Z176">Kazakhstan (Z176)</option>
+                            <option value="Z177">Kenya (Z177)</option>
+                            <option value="Z178">Kirghizistan (Z178)</option>
+                            <option value="Z179">Kiribati (Z179)</option>
+                            <option value="Z180">Kosovo (Z180)</option>
+                            <option value="Z181">Koweït (Z181)</option>
+                            <option value="Z182">Laos (Z182)</option>
+                            <option value="Z183">Lesotho (Z183)</option>
+                            <option value="Z184">Lettonie (Z184)</option>
+                            <option value="Z185">Liban (Z185)</option>
+                            <option value="Z186">Libéria (Z186)</option>
+                            <option value="Z187">Libye (Z187)</option>
+                            <option value="Z188">Liechtenstein (Z188)</option>
+                            <option value="Z189">Lituanie (Z189)</option>
+                            <option value="Z190">Luxembourg (Z190)</option>
+                            <option value="Z191">Macédoine (Z191)</option>
+                            <option value="Z192">Madagascar (Z192)</option>
+                            <option value="Z193">Malaisie (Z193)</option>
+                            <option value="Z194">Malawi (Z194)</option>
+                            <option value="Z195">Maldives (Z195)</option>
+                            <option value="Z196">Mali (Z196)</option>
+                            <option value="Z197">Malte (Z197)</option>
+                            <option value="Z198">Maroc (Z198)</option>
+                            <option value="Z199">Îles Marshall (Z199)</option>
+                            <option value="Z200">Maurice (Z200)</option>
+                            <option value="Z201">Mauritanie (Z201)</option>
+                            <option value="Z202">Mexique (Z202)</option>
+                            <option value="Z203">Micronésie (Z203)</option>
+                            <option value="Z204">Moldavie (Z204)</option>
+                            <option value="Z205">Monaco (Z205)</option>
+                            <option value="Z206">Mongolie (Z206)</option>
+                            <option value="Z207">Monténégro (Z207)</option>
+                            <option value="Z208">Mozambique (Z208)</option>
+                            <option value="Z209">Myanmar (Z209)</option>
+                            <option value="Z210">Namibie (Z210)</option>
+                            <option value="Z211">Nauru (Z211)</option>
+                            <option value="Z212">Népal (Z212)</option>
+                            <option value="Z213">Nicaragua (Z213)</option>
+                            <option value="Z214">Niger (Z214)</option>
+                            <option value="Z215">Nigéria (Z215)</option>
+                            <option value="Z216">Norvège (Z216)</option>
+                            <option value="Z217">Nouvelle-Zélande (Z217)</option>
+                            <option value="Z218">Oman (Z218)</option>
+                            <option value="Z219">Ouganda (Z219)</option>
+                            <option value="Z220">Ouzbékistan (Z220)</option>
+                            <option value="Z221">Pakistan (Z221)</option>
+                            <option value="Z222">Palaos (Z222)</option>
+                            <option value="Z223">Panama (Z223)</option>
+                            <option value="Z224">Papouasie-Nouvelle-Guinée (Z224)</option>
+                            <option value="Z225">Paraguay (Z225)</option>
+                            <option value="Z226">Pays-Bas (Z226)</option>
+                            <option value="Z227">Pérou (Z227)</option>
+                            <option value="Z228">Philippines (Z228)</option>
+                            <option value="Z229">Pologne (Z229)</option>
+                            <option value="Z230">Portugal (Z230)</option>
+                            <option value="Z231">Qatar (Z231)</option>
+                            <option value="Z232">République centrafricaine (Z232)</option>
+                            <option value="Z233">République tchèque (Z233)</option>
+                            <option value="Z234">République démocratique du Congo (Z234)</option>
+                            <option value="Z235">République dominicaine (Z235)</option>
+                            <option value="Z236">Roumanie (Z236)</option>
+                            <option value="Z237">Royaume-Uni (Z237)</option>
+                            <option value="Z238">Russie (Z238)</option>
+                            <option value="Z239">Rwanda (Z239)</option>
+                            <option value="Z240">Saint-Christophe-et-Niévès (Z240)</option>
+                            <option value="Z241">Sainte-Lucie (Z241)</option>
+                            <option value="Z242">Saint-Vincent-et-les-Grenadines (Z242)</option>
+                            <option value="Z243">Salomon (Z243)</option>
+                            <option value="Z244">Samoa (Z244)</option>
+                            <option value="Z245">Sao Tomé-et-Principe (Z245)</option>
+                            <option value="Z246">Sénégal (Z246)</option>
+                            <option value="Z247">Serbie (Z247)</option>
+                            <option value="Z248">Seychelles (Z248)</option>
+                            <option value="Z249">Sierra Leone (Z249)</option>
+                            <option value="Z250">Singapour (Z250)</option>
+                            <option value="Z251">Slovaquie (Z251)</option>
+                            <option value="Z252">Slovénie (Z252)</option>
+                            <option value="Z253">Somalie (Z253)</option>
+                            <option value="Z254">Soudan (Z254)</option>
+                            <option value="Z255">Soudan du Sud (Z255)</option>
+                            <option value="Z256">Sri Lanka (Z256)</option>
+                            <option value="Z257">Suède (Z257)</option>
+                            <option value="Z258">Suisse (Z258)</option>
+                            <option value="Z259">Suriname (Z259)</option>
+                            <option value="Z260">Swaziland (Z260)</option>
+                            <option value="Z261">Syrie (Z261)</option>
+                            <option value="Z262">Tadjikistan (Z262)</option>
+                            <option value="Z263">Tanzanie (Z263)</option>
+                            <option value="Z264">Tchad (Z264)</option>
+                            <option value="Z265">Thaïlande (Z265)</option>
+                            <option value="Z266">Timor oriental (Z266)</option>
+                            <option value="Z267">Togo (Z267)</option>
+                            <option value="Z268">Tonga (Z268)</option>
+                            <option value="Z269">Trinité-et-Tobago (Z269)</option>
+                            <option value="Z270">Tunisie (Z270)</option>
+                            <option value="Z271">Turkménistan (Z271)</option>
+                            <option value="Z272">Turquie (Z272)</option>
+                            <option value="Z273">Tuvalu (Z273)</option>
+                            <option value="Z274">Ukraine (Z274)</option>
+                            <option value="Z275">Uruguay (Z275)</option>
+                            <option value="Z276">Vanuatu (Z276)</option>
+                            <option value="Z277">Vatican (Z277)</option>
+                            <option value="Z278">Venezuela (Z278)</option>
+                            <option value="Z279">Vietnam (Z279)</option>
+                            <option value="Z280">Yémen (Z280)</option>
+                            <option value="Z281">Zambie (Z281)</option>
+                            <option value="Z448">Zimbabwe (Z448)</option>
+                        </select>
+                        <small class="text-muted">Sélectionnez votre pays de naissance (Italie ou étranger)</small>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary btn-lg"
+                        style="width: 100%; margin-top: var(--spacing-xl);">
+                        Calculer mon Code Fiscal
+                    </button>
+                </form>
+
+                <!-- Result Container -->
+                <div id="result-container">
+                    <div class="text-center">
+                        <h3 style="color: var(--color-secondary); margin-bottom: var(--spacing-md);">
+                            ✓ Votre Code Fiscal
+                        </h3>
+                        <div id="result-code">RSSMRA80A01H501Z</div>
+
+                        <div
+                            style="display: flex; gap: var(--spacing-md); justify-content: center; margin-top: var(--spacing-lg);">
+                            <button id="copy-button" class="btn btn-secondary">
+                                📋 Copier
+                            </button>
+                            <button id="download-button" class="btn btn-outline">
+                                📥 Télécharger
+                            </button>
+                        </div>
+                    </div>
+
+                    <div id="breakdown-container"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Info Section -->
+    <section class="info-section">
+        <div class="container container-narrow">
+            <h2 class="text-center mb-3xl fade-in">Qu'est-ce que le Code Fiscal Italien ?</h2>
+
+            <div class="info-card fade-in">
+                <h3>📋 Définition</h3>
+                <p>
+                    Le <strong>Codice Fiscale</strong> est l'équivalent italien du numéro de sécurité sociale.
+                    C'est un code alphanumérique unique de 16 caractères qui identifie chaque personne résidant en
+                    Italie.
+                </p>
+            </div>
+
+            <div class="info-card fade-in">
+                <h3>🎯 Pourquoi en avez-vous besoin ?</h3>
+                <p>Le code fiscal est <strong>obligatoire</strong> pour :</p>
+                <ul style="margin-left: var(--spacing-xl); margin-top: var(--spacing-md);">
+                    <li>✓ Inscription à l'université</li>
+                    <li>✓ Ouverture d'un compte bancaire</li>
+                    <li>✓ Signature d'un contrat de location</li>
+                    <li>✓ Obtention d'une carte SIM italienne</li>
+                    <li>✓ Accès aux services de santé</li>
+                    <li>✓ Déclaration d'impôts</li>
+                </ul>
+            </div>
+
+            <div class="info-card fade-in">
+                <h3>🔢 Comment est-il composé ?</h3>
+                <p>Le code fiscal est généré selon un algorithme officiel :</p>
+                <ul style="margin-left: var(--spacing-xl); margin-top: var(--spacing-md);">
+                    <li><strong>3 lettres</strong> : Consonnes du nom de famille</li>
+                    <li><strong>3 lettres</strong> : Consonnes du prénom</li>
+                    <li><strong>5 caractères</strong> : Date de naissance et sexe</li>
+                    <li><strong>4 caractères</strong> : Code de la commune de naissance</li>
+                    <li><strong>1 lettre</strong> : Caractère de contrôle</li>
+                </ul>
+            </div>
+
+            <div class="info-card fade-in"
+                style="background: rgba(46, 204, 113, 0.1); border-left-color: var(--color-secondary);">
+                <h3>💡 Conseil VISTO</h3>
+                <p>
+                    <strong>Conservez précieusement votre code fiscal !</strong> Vous en aurez besoin dès votre arrivée
+                    en Italie.
+                    Nous vous recommandons de le noter dans plusieurs endroits et de l'enregistrer dans votre téléphone.
+                </p>
+            </div>
+
+            <div class="text-center mt-3xl">
+                <a href="mediatheque.html" class="btn btn-primary btn-lg">
+                    📚 Accéder à la Médiathèque
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer-section">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4>VistoApplicazione</h4>
+                    <p>Votre partenaire de confiance pour concrétiser votre projet d'étude en Italie. De Douala à Milan,
+                        nous sommes avec vous.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Liens Utiles</h4>
+                    <ul>
+                        <li><a href="universites.html">Universités</a></li>
+                        <li><a href="services.html">Nos Services</a></li>
+                        <li><a href="code-fiscale.html">Code Fiscal</a></li>
+                        <li><a href="mediatheque.html">Médiathèque</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Légal</h4>
+                    <ul>
+                        <li><a href="#">CGV</a></li>
+                        <li><a href="#">Politique de confidentialité</a></li>
+                        <li><a href="#">Mentions légales</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Newsletter</h4>
+                    <p>Recevez les dates limites importantes.</p>
+                    <input type="email" placeholder="Votre email" class="footer-newsletter-input">
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>Fait avec ❤️ pour les étudiants par VistoApplicazione © 2025</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Widget -->
+    <div class="floating-widget whatsapp-widget">
+        <button class="widget-button" aria-label="Contact WhatsApp">
+            💬
+        </button>
+        <div class="widget-tooltip">Besoin d'aide ?</div>
+    </div>
+
+    <!-- AI Assistant Widget -->
+    <a href="https://chatgpt.com/g/g-6864e18a99688191a39104a164c7b6d9-fabrizio-ia" target="_blank" class="floating-widget ai-widget" style="text-decoration: none;">
+        <button class="widget-button" aria-label="Assistant IA">
+            🤖
+        </button>
+        <div class="widget-tooltip">Assistant IA</a>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/main.js"></script>
+    <script src="js/country-codes.js"></script>
+    <script src="js/code-fiscale.js"></script>
+</body>
+
+</html>

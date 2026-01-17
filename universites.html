@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Découvrez les meilleures universités italiennes - Classements, programmes, critères d'admission">
+    <meta name="keywords" content="universités italiennes, classement, Politecnico Milano, Sapienza, Bologna">
+    <title>Universités Italiennes - Classements & Programmes | VISTO</title>
+
+    <link rel="stylesheet" href="css/design-system.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/animations.css">
+
+    <style>
+        .page-header {
+            background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark)),
+                url('images/universities.png') center/cover;
+            color: white;
+            padding: var(--spacing-4xl) 0 var(--spacing-3xl);
+            text-align: center;
+            position: relative;
+        }
+
+        .page-header::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(15, 76, 129, 0.9), rgba(15, 76, 129, 0.7));
+        }
+
+        .page-header>* {
+            position: relative;
+            z-index: 1;
+        }
+
+        .page-header h1 {
+            color: white;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .university-card {
+            display: flex;
+            gap: var(--spacing-xl);
+            background: var(--color-surface);
+            border-radius: var(--radius-xl);
+            padding: var(--spacing-xl);
+            margin-bottom: var(--spacing-xl);
+            box-shadow: var(--shadow-md);
+            transition: all var(--transition-base);
+        }
+
+        .university-card:hover {
+            box-shadow: var(--shadow-xl);
+            transform: translateY(-3px);
+        }
+
+        .university-rank {
+            flex-shrink: 0;
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--color-primary), var(--color-primary-light));
+            border-radius: var(--radius-xl);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: var(--font-size-3xl);
+            font-weight: var(--font-weight-extrabold);
+            color: white;
+            font-family: var(--font-heading);
+        }
+
+        .university-info {
+            flex: 1;
+        }
+
+        .university-name {
+            font-size: var(--font-size-2xl);
+            margin-bottom: var(--spacing-sm);
+            color: var(--color-primary);
+        }
+
+        .university-location {
+            color: var(--color-text-secondary);
+            margin-bottom: var(--spacing-md);
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-xs);
+        }
+
+        .university-specialties {
+            display: flex;
+            gap: var(--spacing-sm);
+            flex-wrap: wrap;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .university-stats {
+            display: flex;
+            gap: var(--spacing-xl);
+            margin-top: var(--spacing-md);
+            padding-top: var(--spacing-md);
+            border-top: 1px solid var(--color-background);
+        }
+
+        .stat {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-xs);
+        }
+
+        .stat-label {
+            font-size: var(--font-size-sm);
+            color: var(--color-text-secondary);
+        }
+
+        .stat-value {
+            font-size: var(--font-size-lg);
+            font-weight: var(--font-weight-bold);
+            color: var(--color-primary);
+        }
+
+        .filter-section {
+            background: var(--color-surface);
+            padding: var(--spacing-xl);
+            border-radius: var(--radius-xl);
+            margin-bottom: var(--spacing-2xl);
+            box-shadow: var(--shadow-md);
+        }
+
+        .filter-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--spacing-lg);
+            margin-top: var(--spacing-lg);
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="index.html" class="navbar-logo">VISTO<span>Applicazione</span></a>
+            <button class="navbar-toggle" aria-label="Toggle navigation">
+                <span></span><span></span><span></span>
+            </button>
+            <ul class="navbar-menu">
+                <li class="navbar-item"><a href="index.html" class="navbar-link">Accueil</a></li>
+                <li class="navbar-item"><a href="universites.html" class="navbar-link">Universités</a></li>
+                <li class="navbar-item"><a href="services.html" class="navbar-link">Nos Services</a></li>
+                <li class="navbar-item navbar-dropdown">
+                    <a href="#" class="navbar-link navbar-dropdown-toggle">Outils Pratiques</a>
+                    <div class="navbar-dropdown-menu">
+                        <a href="code-fiscale.html" class="navbar-dropdown-item">🧮 Calcul Code Fiscale</a>
+                        <a href="verifier-agent.html" class="navbar-dropdown-item">🔍 Vérifier un Agent</a>
+                    </div>
+                </li>
+                <li class="navbar-item"><a href="mediatheque.html" class="navbar-link">Médiathèque</a></li>
+                <li class="navbar-item"><a href="blog.html" class="navbar-link">Blog</a></li>
+                <li class="navbar-item"><a href="apropos.html" class="navbar-link">À propos</a></li>
+                <li class="navbar-item"><a href="contact.html" class="navbar-link">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1 class="fade-in">🎓 Universités Italiennes</h1>
+            <p class="fade-in" style="font-size: var(--font-size-lg); max-width: 700px; margin: 0 auto;">
+                Découvrez les meilleures universités d'Italie et trouvez celle qui correspond à vos ambitions
+            </p>
+        </div>
+    </section>
+
+    <!-- Filter Section -->
+    <section class="py-4xl">
+        <div class="container">
+            <div class="filter-section fade-in">
+                <h3>Filtrer les universités</h3>
+
+                <!-- Search Bar -->
+                <div class="form-group" style="margin-top: var(--spacing-lg);">
+                    <label for="search-input" class="form-label">🔍 Recherche</label>
+                    <input type="text" id="search-input" class="form-input"
+                        placeholder="Rechercher par nom d'université, ville, domaine...">
+                    <small class="text-muted">Tapez pour rechercher en temps réel</small>
+                </div>
+
+                <div class="filter-grid">
+                    <div class="form-group">
+                        <label for="city-filter" class="form-label">Ville</label>
+                        <select id="city-filter" class="form-select">
+                            <option value="">Toutes les villes</option>
+                            <option value="rome">Rome</option>
+                            <option value="milan">Milan</option>
+                            <option value="bologna">Bologne</option>
+                            <option value="florence">Florence</option>
+                            <option value="turin">Turin</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="domain-filter" class="form-label">Domaine</label>
+                        <select id="domain-filter" class="form-select">
+                            <option value="">Tous les domaines</option>
+                            <option value="engineering">Ingénierie</option>
+                            <option value="medicine">Médecine</option>
+                            <option value="business">Business</option>
+                            <option value="arts">Arts & Design</option>
+                            <option value="sciences">Sciences</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="level-filter" class="form-label">Niveau</label>
+                        <select id="level-filter" class="form-select">
+                            <option value="">Tous les niveaux</option>
+                            <option value="bachelor">Licence (Laurea)</option>
+                            <option value="master">Master (Magistrale)</option>
+                            <option value="phd">Doctorat</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Universities List (will be populated dynamically) -->
+            <div id="universities-container" class="universities-container">
+                <!-- Loading state -->
+                <div class="text-center py-4xl">
+                    <p class="text-muted">Chargement des universités...</p>
+                </div>
+            </div>
+
+            <!-- CTA Section -->
+            <div class="text-center mt-4xl">
+                <div class="card" style="max-width: 700px; margin: 0 auto;">
+                    <h3>Besoin d'aide pour choisir ?</h3>
+                    <p class="text-muted">
+                        Notre équipe d'experts vous accompagne dans le choix de l'université qui correspond
+                        à votre profil et vos ambitions.
+                    </p>
+                    <a href="contact.html" class="btn btn-primary btn-lg mt-lg">
+                        Demander un conseil gratuit
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer-section">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4>VistoApplicazione</h4>
+                    <p>Votre partenaire de confiance pour concrétiser votre projet d'étude en Italie. De Douala à Milan,
+                        nous sommes avec vous.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Liens Utiles</h4>
+                    <ul>
+                        <li><a href="universites.html">Universités</a></li>
+                        <li><a href="services.html">Nos Services</a></li>
+                        <li><a href="code-fiscale.html">Code Fiscal</a></li>
+                        <li><a href="mediatheque.html">Médiathèque</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Légal</h4>
+                    <ul>
+                        <li><a href="#">CGV</a></li>
+                        <li><a href="#">Politique de confidentialité</a></li>
+                        <li><a href="#">Mentions légales</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Newsletter</h4>
+                    <p>Recevez les dates limites importantes.</p>
+                    <input type="email" placeholder="Votre email" class="footer-newsletter-input">
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>Fait avec ❤️ pour les étudiants par VistoApplicazione © 2025</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp & AI Widgets -->
+    <div class="floating-widget whatsapp-widget">
+        <button class="widget-button" aria-label="Contact WhatsApp">💬</button>
+        <div class="widget-tooltip">Besoin d'aide ?</div>
+    </div>
+    <a href="https://chatgpt.com/g/g-6864e18a99688191a39104a164c7b6d9-fabrizio-ia" target="_blank" class="floating-widget ai-widget" style="text-decoration: none;">
+        <button class="widget-button" aria-label="Assistant IA">🤖</button>
+        <div class="widget-tooltip">Assistant IA</a>
+    </div>
+
+    <script src="data/universities.js"></script>
+    <script src="js/universities-display.js"></script>
+    <script src="js/main.js"></script>
+</body>
+
+</html>
